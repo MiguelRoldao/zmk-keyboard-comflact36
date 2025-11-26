@@ -4,8 +4,7 @@
 name: zmk-keyboard-comflact36
 build:
   # List your dependencies
-  depends:
-    - zmk-example-dependency
+  depends: .
   # Folder containing a "CMakeLists.txt" (. = root)
   cmake: .
   # Kconfig filepath
