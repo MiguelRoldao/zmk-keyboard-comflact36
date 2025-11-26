@@ -1,7 +1,9 @@
 manifest:
   remotes:
-    - name: remote-name
-      url-base: https://github.com/remote-name
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: miguelroldao
+      url-base: https://github.com/miguelroldao
   projects:
     # Together with the above defined remote, this refers to a module located at
     # https://github.com/remote-name/repository-name

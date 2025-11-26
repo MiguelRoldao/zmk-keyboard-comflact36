@@ -1,0 +1,6 @@
+if SHIELD_COMFLACT36
+
+config ZMK_KEYBOARD_NAME
+    default "Comflact36"
+
+endif
