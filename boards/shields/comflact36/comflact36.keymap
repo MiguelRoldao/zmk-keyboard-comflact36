@@ -28,18 +28,27 @@
 
 / {
 	macros {
-		ZMK_MACRO(m_nd_tilde,
-			bindings = <&kp PT_TILDE &kp SPACE>;
-	    )
-	    ZMK_MACRO(m_nd_caret,
-   			bindings = <&kp PT_CARET &kp SPACE>;
-   	    )
-	    ZMK_MACRO(m_nd_grave,
-   			bindings = <&kp PT_GRAVE &kp SPACE>;
-   	    )
-	    ZMK_MACRO(m_prev_dir,
-   			bindings = <&kp PT_DOT &kp PT_DOT &kp PT_FSLH>;
-   	    )
+		ZMK_MACRO(m_nd_tilde, bindings = <&kp PT_TILDE &kp SPACE>; )
+	    ZMK_MACRO(m_nd_caret, bindings = <&kp PT_CARET &kp SPACE>; )
+	    ZMK_MACRO(m_nd_grave, bindings = <&kp PT_GRAVE &kp SPACE>; )
+	    ZMK_MACRO(m_prev_dir, bindings = <&kp PT_DOT   &kp PT_DOT  &kp PT_FSLH>; )
+
+	    ZMK_MACRO(m_0x, bindings = <&kp PT_N0 &kp PT_X>; )
+	    ZMK_MACRO(m_0b, bindings = <&kp PT_N0 &kp PT_B>; )
+
+   	    ZMK_MACRO(pt_a_grave, bindings = <&kp PT_GRAVE &kp PT_A>; )
+   	    ZMK_MACRO(pt_a_acute, bindings = <&kp PT_ACUTE &kp PT_A>; )
+   	    ZMK_MACRO(pt_a_tilde, bindings = <&kp PT_TILDE &kp PT_A>; )
+   	    ZMK_MACRO(pt_a_caret, bindings = <&kp PT_CARET &kp PT_A>; )
+   	    ZMK_MACRO(pt_e_acute, bindings = <&kp PT_ACUTE &kp PT_E>; )
+   	    ZMK_MACRO(pt_e_caret, bindings = <&kp PT_CARET &kp PT_E>; )
+   	    ZMK_MACRO(pt_i_acute, bindings = <&kp PT_ACUTE &kp PT_I>; )
+   	    ZMK_MACRO(pt_o_acute, bindings = <&kp PT_ACUTE &kp PT_O>; )
+   	    ZMK_MACRO(pt_o_caret, bindings = <&kp PT_CARET &kp PT_O>; )
+   	    ZMK_MACRO(pt_u_acute, bindings = <&kp PT_ACUTE &kp PT_U>; )
+   	    ZMK_MACRO(pt_n_tilde, bindings = <&kp PT_TILDE &kp PT_N>; )
+   	    ZMK_MACRO(pt_ao,      bindings = <&kp PT_TILDE &kp PT_A &kp PT_O>; )
+   	    ZMK_MACRO(pt_oe,      bindings = <&kp PT_TILDE &kp PT_O &kp PT_E>; )
 	};
 
 	combos {
@@ -76,21 +85,46 @@
         base {
             display-name = "Base";
             bindings = <
-&kp PT_W        &kp PT_G       &kp PT_D      &kp PT_F      &kp PT_K    /**/ &kp PT_J      &kp PT_L       &kp PT_U          &kp PT_O         &kp PT_Y
-&mt LCTRL PT_R  &mt LSHFT PT_S &mt LGUI PT_T &mt LALT PT_H &kp PT_B    /**/ &kp PT_Q      &mt LALT PT_N  &mt LGUI PT_E     &mt LSHFT PT_A   &mt LCTRL PT_I
-&lt FUN PT_X    &kp PT_C       &kp PT_M      &kp PT_P      &kp PT_V    /**/ &kp PT_Z      &&&&LO PT      &kp PT_COMMA      &kp PT_DOT       &kp PT_SQT
-                               &kp ESC       &lt NUM SPACE &lt MSE TAB /**/ &lt NAV ENTER &lt SYM BSPC   &&&&OS_LSHFT
+&lt FUN PT_Q    &kp PT_W       &kp PT_E      &kp PT_R      &kp PT_T    /**/ &kp PT_Y      &kp PT_U      &kp PT_I          &kp PT_O         &kp PT_P
+&kp PT_A        &kp PT_S       &kp PT_D      &kp PT_F      &kp PT_G    /**/ &kp PT_H      &kp PT_J      &kp PT_K          &kp PT_L         &sl PT
+&mt LCTRL PT_Z  &mt LSHFT PT_X &mt LGUI PT_C &mt LALT PT_V &kp PT_B    /**/ &kp PT_N      &mt LALT PT_M &mt LGUI PT_COMMA &mt LSHFT PT_DOT &mt LCTRL PT_SQT
+                               &kp ESC       &lt NUM SPACE &lt MSE TAB /**/ &lt NAV ENTER &lt SYM BSPC  &sk LSHFT
+            >;
+        };
+
+        aptv3 {
+            display-name = "APTv3";
+            bindings = <
+&lt FUN PT_W    &kp PT_G       &kp PT_D      &kp PT_F      &kp PT_K    /**/ &kp PT_J      &kp PT_L      &kp PT_U          &kp PT_O         &kp PT_Y
+&kp PT_R        &kp PT_S       &kp PT_T      &kp PT_H      &kp PT_B    /**/ &kp PT_Q      &kp PT_N      &kp PT_E          &kp PT_A         &kp PT_I
+&mt LCTRL PT_X  &mt LSHFT PT_C &mt LGUI PT_M &mt LALT PT_P &kp PT_V    /**/ &mt LALT PT_Z &sl PT2       &mt LGUI PT_COMMA &mt LSHFT PT_DOT &mt LCTRL PT_SQT
+                               &kp ESC       &lt NUM SPACE &lt MSE TAB /**/ &lt NAV ENTER &lt SYM BSPC  &sk LSHFT
+            >;
+        };
+
+        pt {
+            display-name = "PT";
+            bindings = <
+&kp pt_a_grave &kp pt_a_caret &kp pt_e_acute   &trans        &kp PT_GRAVE  /**/ &kp PT_ACUTE   &kp pt_u_acute &kp pt_i_acute &kp pt_o_acute &trans
+&kp pt_a_acute &kp pt_a_tilde &kp pt_e_caret   &kp pt_ao     &kp PT_TILDE  /**/ &kp PT_CARET   &trans         &trans         &kp pt_o_caret &trans
+&trans         &trans         &kp PT_C_CEDILLA &kp pt_oe     &kp PT_UMLAUT /**/ &kp pt_n_tilde &trans         &trans         &trans         &trans
+                              &trans           &trans        &lt trans     /**/ &trans         &trans         &trans
+            >;
+        };
+
+        pt2 {
+            display-name = "PT2";
+            bindings = <
+&kp PT_GRAVE   &kp PT_ACUTE   &kp PT_CARET     &kp PT_TILDE  &kp PT_UMLAUT /**/ &trans       &trans         &kp pt_u_acute &kp pt_o_acute &kp pt_o_caret
+&trans         &kp pt_a_grave &kp PT_C_CEDILLA &kp pt_ao     &trans        /**/ &trans       &kp pt_n_tilde &kp pt_e_acute &kp pt_a_acute &kp pt_i_acute
+&trans         &trans         &trans           &kp pt_oe     &trans        /**/ &trans       &trans         &kp pt_e_caret &kp pt_a_tilde &kp pt_a_caret
+                              &trans           &trans        &lt trans     /**/ &trans       &trans         &trans
             >;
         };
 
         sym {
             display-name = "Symbol";
             bindings = <
-/*
-^ < >   - \   & { ? } $
-: * /   = #   | ( ! ) ;
-~ + ` ../ %   @ [ _ ] €
-*/
 &m_nd_caret  &kp PT_LT   &kp PT_GT      &kp PT_MINUS   &kp PT_BSLH  /**/ &kp PT_AMPS &kp PT_LBRC &kp PT_QMARK &kp PT_RBRC &kp PT_DLLR
 &kp PT_COLON &kp PT_STAR &kp PT_FSLH    &kp PT_EQUAL   &kp PT_HASH  /**/ &kp PT_PIPE &kp PT_LPAR &kp PT_EXCL  &kp PT_RPAR &kp PT_SEMI
 &m_nd_tilde  &kp PT_PLUS &kp m_nd_grave &kp m_prev_dir &kp PT_PRCNT /**/ &kp PT_AT   &kp PT_LBKT &kp PT_UNDER &kp PT_RBKT &kp PT_EURO
@@ -101,17 +135,17 @@
         num {
         	display-name = "Number";
         	bindings = <
-&kp PT_N0 &kp PT_N7 &kp PT_N8 &kp PT_N9 &kp PT_MINUS /**/ &kp PT_F &kp PT_N7 &kp PT_N8 &kp PT_N9 &kp PT_C
-&kp PT_N0 &kp PT_N4 &kp PT_N5 &kp PT_N6 &kp PT_DOT   /**/ &kp PT_E &kp PT_N4 &kp PT_N5 &kp PT_N6 &kp PT_B
-&kp PT_N0 &kp PT_N1 &kp PT_N2 &kp PT_N3 &kp PT_COMMA /**/ &kp PT_D &kp PT_N1 &kp PT_N2 &kp PT_N3 &kp PT_A
-                    &trans    &trans    &trans       /**/ &trans   &kp PT_N0 &trans
+&kp m_0x  &kp PT_N7 &kp PT_N8 &kp PT_N9 &kp PT_MINUS /**/ &kp PT_F &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp PT_C
+&kp PT_N0 &kp PT_N4 &kp PT_N5 &kp PT_N6 &kp PT_DOT   /**/ &kp PT_E &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp PT_B
+&kp m_0b  &kp PT_N1 &kp PT_N2 &kp PT_N3 &kp PT_COMMA /**/ &kp PT_D &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp PT_A
+                    &trans    &trans    &trans       /**/ &trans   &kp KP_N0 &trans
         	>;
         };
 
         nav {
         	display-name = "Navigation";
         	bindings = <
-&kp NLCK     &kp CLCK     &trans       &trans       &kp C_BRI_UP /**/ &kp PG_UP &kp HOME     &kp UP     &kp END      &kp C_PREV
+&kp NLCK     &kp CLCK     &to BASE     &to APTV3    &kp C_BRI_UP /**/ &kp PG_UP &kp HOME     &kp UP     &kp END      &kp C_PREV
 &kp LCTRL    &kp LSHFT    &kp LGUI     &kp LALT     &kp C_BRI_DN /**/ &kp PG_DN &kp LEFT     &kp DOWN   &kp RIGHT    &kp C_PP
 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR   /**/ &kp PSCRN &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &kp C_NEXT
                           &trans       &trans       &trans       /**/ &trans    &trans       &trans
@@ -121,9 +155,9 @@
         fun {
         	display-name = "Function";
         	bindings = <
-&bootloader &kp F7 &kp F8 &kp F9 &kp F12 /**/ &trans &trans &trans &trans &trans
+&trans      &kp F7 &kp F8 &kp F9 &kp F12 /**/ &trans &trans &trans &trans &trans
 &sys_reset  &kp F4 &kp F5 &kp F6 &kp F11 /**/ &trans &trans &trans &trans &trans
-&trans      &kp F1 &kp F2 &kp F3 &kp F10 /**/ &trans &trans &trans &trans &trans
+&bootloader &kp F1 &kp F2 &kp F3 &kp F10 /**/ &trans &trans &trans &trans &trans
                    &trans &trans &trans  /**/ &trans &trans &trans
         	>;
         };
@@ -131,10 +165,10 @@
         mse {
         	display-name = "Mouse";
         	bindings = <
-&kp LC(PT_Q) &kp LC(PT_W) &kp LC(PT_E) &kp LC(PT_A) &trans           /**/ &msc SCRL_UP   &msc SCRL_RIGHT &mmv MOVE_UP   &msc SCRL_LEFT  &trans
-&kp LCTRL    &kp LSHFT    &kp LGUI     &kp LALT     &kp LC(PT_Y)     /**/ &msc SCRL_DOWN &mmv MOVE_LEFT  &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans
-&kp LC(PT_Z) &kp LC(PT_X) &kp LC(PT_C) &kp LC(PT_V) &kp LC(LS(PT_Z)) /**/ &trans         &mkp MB4        &mkp MCLK      &mkp MB5        &trans
-                          &trans       &trans       &trans           /**/ &mkp LCLK      &mkp RCLK       &mkp MCLK
+&kp LC(PT_Q) &kp LC(PT_W) &kp LC(PT_E) &kp LC(PT_R) &kp LC(PT_A) /**/ &msc SCRL_UP   &msc SCRL_RIGHT &mmv MOVE_UP   &msc SCRL_LEFT  &trans
+&kp LC(PT_Z) &kp LC(PT_X) &kp LC(PT_C) &kp LC(PT_V) &kp LC(PT_Y) /**/ &msc SCRL_DOWN &mmv MOVE_LEFT  &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans
+&kp LCTRL    &kp LSHFT    &kp LGUI     &kp LALT     &kp LC(PT_S) /**/ &trans         &mkp MB4        &mkp MCLK      &mkp MB5        &trans
+                          &trans       &trans       &trans       /**/ &mkp LCLK      &mkp RCLK       &mkp MCLK
         	>;
         };
     };
